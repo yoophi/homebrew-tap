@@ -1,8 +1,8 @@
 class Agentmeter < Formula
   desc "Monitor coding-agent usage limits from one CLI"
   homepage "https://github.com/yoophi/agentmeter"
-  url "https://github.com/yoophi/agentmeter/archive/refs/tags/2026.8.2.tar.gz"
-  sha256 "f8835760ad5f47dce2251116f742c3138f0e3fbe2e636ea33e6ea82bb3cb9890"
+  url "https://github.com/yoophi/agentmeter/archive/refs/tags/2026.8.3.tar.gz"
+  sha256 "ebb916d85693ea6ba32bfc62ccc9da59ed3ca1a711fd1f33e3c3d974c79f92f1"
 
   depends_on "rust" => :build
 
