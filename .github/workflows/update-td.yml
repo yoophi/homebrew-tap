@@ -1,0 +1,45 @@
+name: Update td formula
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Published td tag (vX.Y.Z); leave empty for latest stable release"
+        required: false
+        type: string
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-td-formula
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Test formula updater
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+      - name: Update from published release
+        id: formula
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TD_VERSION: ${{ inputs.version }}
+        run: python3 scripts/update_td.py --version "$TD_VERSION"
+      - name: Validate formula syntax
+        run: ruby -c Formula/td.rb
+      - name: Commit and push formula
+        if: steps.formula.outputs.changed == 'true'
+        env:
+          TD_VERSION: ${{ steps.formula.outputs.version }}
+        run: |
+          git config user.name "yoophi"
+          git config user.email "yoophi@gmail.com"
+          git add Formula/td.rb
+          git diff --cached --quiet && exit 0
+          git commit -m "td: bump to ${TD_VERSION}"
+          git push origin HEAD:main
