@@ -47,6 +47,28 @@ python3 scripts/update_td.py --dry-run
 ruby -c Formula/td.rb
 ```
 
+## td-gui
+
+A local web UI for td, distributed as prebuilt binaries for macOS and Linux
+(Apple Silicon/ARM64 and Intel/AMD64).
+
+```bash
+brew install yoophi/tap/td-gui
+```
+
+Requires `td` v0.57.0 or newer on PATH. If needed, install this tap's td fork:
+
+```bash
+brew install --HEAD yoophi/tap/td
+```
+
+Run `td-gui` inside an existing td project (`td init` must have been run first).
+It starts the local server and opens your browser.
+
+```bash
+brew update && brew upgrade yoophi/tap/td-gui
+```
+
 ## agentmeter
 
 ```bash
