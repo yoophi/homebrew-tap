@@ -69,6 +69,24 @@ It starts the local server and opens your browser.
 brew update && brew upgrade yoophi/tap/td-gui
 ```
 
+## td-backend
+
+The Go and SQLite HTTP store for `td`. Releases follow `YYYY.M.PATCH` CalVer.
+
+```bash
+brew install yoophi/tap/td-backend
+export TD_BACKEND_BOOTSTRAP_TOKEN="$(openssl rand -hex 32)"
+td-backend --addr 127.0.0.1:7000 --db "$HOME/td-backend.db"
+```
+
+Keep the bootstrap token for restarts. `td` connects with
+`TD_BACKEND_TOKEN="$TD_BACKEND_BOOTSTRAP_TOKEN"` and
+`td init --store=td-backend,http://localhost:7000`.
+
+```bash
+brew update && brew upgrade yoophi/tap/td-backend
+```
+
 ## agentmeter
 
 ```bash
