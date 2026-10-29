@@ -112,3 +112,21 @@ Upgrade with:
 ```bash
 brew upgrade diskmeter
 ```
+
+## AutoSRT
+
+Create SRT subtitles from YouTube videos or local audio/video using local Whisper inference.
+The first binary release supports Apple Silicon on macOS 15 or later. Versions use `YYYY.M.PATCH` CalVer.
+
+```bash
+brew install yoophi/tap/autosrt
+autosrt config set model /path/to/ggml-small.bin
+autosrt doctor
+autosrt example.mp3
+```
+
+Models are not bundled. Existing ystt users can run `autosrt config migrate` to copy their settings and model safely.
+
+```bash
+brew upgrade yoophi/tap/autosrt
+```
