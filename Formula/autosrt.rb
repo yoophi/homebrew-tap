@@ -1,9 +1,9 @@
 class Autosrt < Formula
   desc "Generate SRT subtitles from YouTube or local media with a terminal UI"
   homepage "https://github.com/yoophi/autosrt"
-  url "https://github.com/yoophi/autosrt/releases/download/v2026.10.0/autosrt-2026.10.0-aarch64-apple-darwin.tar.gz"
-  version "2026.10.0"
-  sha256 "c1a3bbd4a280b8f23f80b9a5f10ba57161aa184acdbe7dd374f31a01065315da"
+  url "https://github.com/yoophi/autosrt/releases/download/v2026.10.1/autosrt-2026.10.1-aarch64-apple-darwin.tar.gz"
+  version "2026.10.1"
+  sha256 "22bc8f30c09a3325631ed861b0d318203d43e2826826592641cd61dd210080f8"
   license "MIT"
 
   depends_on arch: :arm64
